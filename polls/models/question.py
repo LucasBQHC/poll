@@ -1,35 +1,21 @@
-import datetime
 import uuid
+
+from .choice import Choice
 
 
 class Question:
-    def __init__(self, title: str,):
-        self.id = uuid.uuid4()
-        self.title = title
-        self.publication_date = datetime.datetime.now()
-        self.status = 'active'
-        self.choices = []
 
-    def add_choice(self, choice_one, choice_two, choice_three, choice_four):
-        self.choices = {
-            'choice_one': {
-                'id': uuid.uuid4(),
-                'choice_text': choice_one,
-                'vote': 0,
-            },
-            'choice_two': {
-                'id': uuid.uuid4(),
-                'choice_text': choice_two,
-                'vote': 0,
-            },
-            'choice_three': {
-                'id': uuid.uuid4(),
-                'choice_text': choice_three,
-                'vote': 0,
-            },
-            'choice_four': {
-                'id': uuid.uuid4(),
-                'choice_text': choice_four,
-                'vote': 0,
-            },
-        }
+    def __init__(self, title: str):
+        self._id = str(uuid.uuid4())
+        self._title = title
+        self._choices = []
+
+    def add_choice(self, choice):
+        assert isinstance(choice, Choice)
+        self._choices.append(choice)
+    
+    def get_title(self):
+        return self._title
+
+    def get_id(self):
+        return self._id 

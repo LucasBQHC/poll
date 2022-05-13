@@ -1,4 +1,4 @@
-from polls.commands import create_question_command, get_question_command, get_all_question_command
+from polls.commands import create_poll_command, create_question_command, get_question_command, get_all_question_command
 
 
 def execute():
@@ -8,9 +8,9 @@ def execute():
     while option != 6:
 
         print('\n')
-        print('================================== MENU: ==================================\n')
-        print('| 1 - CREATE | 2 - GET | 3 - GET ALL | 4 - UPDATE | 5 - DELETE | 6 - EXIT |\n')
-        print('===========================================================================\n')
+        print('==================================== MENU: ====================================\n')
+        print('| 1 - CREATE Q | 2 - GET | 3 - GET ALL | 4 - CREATE P | 5 - DELETE | 6 - EXIT |\n')
+        print('===============================================================================\n')
 
         try:
             option = int(input('- Please type a number from menu: '))
@@ -27,8 +27,7 @@ def execute():
                     get_all_question_command()
 
                 elif option == 4:
-                    print('Not implemented yet')
-                    # update_question_command()
+                    create_poll_command()
 
                 elif option == 5:
                     print('Not implemented yet')

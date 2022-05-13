@@ -1,4 +1,4 @@
-from db import poll_list
+from polls.db import poll_list
 
 
 def get_all_question_controller():
