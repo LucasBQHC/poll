@@ -1,4 +1,4 @@
-
+from polls import settings
 
 class QuestionRepository:
 
@@ -15,5 +15,6 @@ class QuestionRepository:
             if question.get_id() == id:
                 return question
 
-    def clear_all(self):
-        self._questions.clear()
+    if settings.ENVIRONMENT == 'testing':
+        def clear_all(self):
+            self._questions.clear()
