@@ -1,4 +1,4 @@
-from polls.controllers import create_question_controller
+from polls.controllers import CreateQuestionController
 
 
 def create_question_command():
@@ -6,14 +6,12 @@ def create_question_command():
     choice_one = input('Choice one: ')
     choice_two = input('Choice two: ')
     choice_three = input('Choice three: ')
-    choice_four = input('Choice four: ')
 
-    create_question_controller(
+    CreateQuestionController(
         title,
         choices=[
             choice_one,
             choice_two,
             choice_three,
-            choice_four
         ]
-    )
+    ).create()

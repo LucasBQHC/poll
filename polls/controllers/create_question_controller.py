@@ -1,11 +1,17 @@
-from polls.db import poll_list
 from polls.models.choice import Choice
 from polls.models.question import Question
+from polls.repository import QuestionRepository
 
 
-def create_question_controller(title, choices):
-    question = Question(title=title)
-    for choice in choices:
-        question.add_choice(choice=Choice(text=choice))
-    poll_list.append(question)
-    return question
+class CreateQuestionController:
+
+    def __init__(self, title, choices):
+        self._title = title
+        self._choices = choices
+    
+    def create(self):
+        question = Question(title=self._title)
+        for choice in self._choices:
+            question.add_choice(choice=Choice(text=choice))
+        QuestionRepository().add(question)
+        return question

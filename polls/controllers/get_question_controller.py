@@ -1,7 +1,10 @@
-from polls.db import poll_list
+from polls.repository import QuestionRepository
 
 
-def get_question_controller(id):
-    for question in poll_list:
-        if question._id == id:
-            return question
+class GetQuestionController:
+
+    def get_by_id(self, id):
+        return QuestionRepository().get_by_id(id)
+
+    def get_all(self):
+        return QuestionRepository().get_all()

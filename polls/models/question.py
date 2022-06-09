@@ -18,4 +18,7 @@ class Question:
         return self._title
 
     def get_id(self):
-        return self._id 
+        return self._id
+
+    def get_choices(self):
+        return tuple(self._choices) 

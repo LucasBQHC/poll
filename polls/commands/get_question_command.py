@@ -1,27 +1,18 @@
-from polls.controllers import get_question_controller
+from polls.controllers import GetQuestionController
 
 
 def get_question_command():
     id = input('Question id: ')
-    question = get_question_controller(id)
+    question = GetQuestionController().get_by_id(id)
     if question:
         print(
             f"""
-            Title: {question._title}.
+            Title: {question.get_title()}.
 
             Choices & votes:
 
-                Choice: {question._choices[0]._text}.
-                    - Total votes: {question._choices[0]._votes}.
+            {question.get_choices()}
 
-                Choice: {question._choices[1]._text}.
-                    - Total votes: {question._choices[1]._votes}.
-
-                Choice: {question._choices[2]._text}.
-                    - Total votes: {question._choices[2]._votes}.
-
-                Choice: {question._choices[3]._text}.
-                    - Total votes: {question._choices[3]._votes}.
             """)
     else:
         print('Question does not exist')

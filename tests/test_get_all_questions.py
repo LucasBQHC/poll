@@ -1,38 +1,30 @@
-from random import choices
-from turtle import title
-from polls.db import poll_list
-from polls.controllers import create_question_controller, get_all_question_controller
+from polls.controllers import CreateQuestionController
+from polls.repository.question_repository import QuestionRepository
 
 
-def test_get_all_question():
-
-    create_question_controller(
+def test_get_all_question(repository_transaction):
+    CreateQuestionController(
         title='Some question',
         choices=[
             'choice one',
             'choice two',
             'choice three',
-            'choice four'
         ]
-    )
-
-    create_question_controller(
+    ).create()
+    
+    CreateQuestionController(
         title='Some question',
         choices=[
             'choice one',
             'choice two',
             'choice three',
-            'choice four'
         ]
-    )
+    ).create()
 
-    get_all_question_controller()
+    assert len(QuestionRepository().get_all()) == 2
 
-    assert len(poll_list) == 2
-
-    poll_list.clear() 
 
 def test_when_there_are_no_questions():
-    questions =  get_all_question_controller()
+    questions = QuestionRepository().get_all()
 
-    assert questions == []
+    assert len(questions) == 0

@@ -1,22 +1,22 @@
-from polls.controllers import create_poll_controller
+from constants import PollStatus
+from polls.controllers import CreatePollController
+from polls.repository.question_repository import QuestionRepository
 
 
-def test_create_poll():
-    poll = create_poll_controller(
+def test_create_poll(repository_transaction):
+    poll = CreatePollController(
         poll_title='Poll title',
         question_title='Question title',
         choices=[
             'Choice one',
             'Choice two',
             'Choice three',
-            'Choice four',
         ]
-    )
+    ).create()
 
     assert poll.get_title() == 'Poll title'
-    assert poll.get_state() == 'draft'
-    assert poll._questions[0]._title == 'Question title'
-    assert poll._questions[0]._choices[0]._text == 'Choice one'
-    assert poll._questions[0]._choices[1]._text == 'Choice two'
-    assert poll._questions[0]._choices[2]._text == 'Choice three'
-    assert poll._questions[0]._choices[3]._text == 'Choice four'
+    assert poll.get_state() == PollStatus.DRAFT
+    assert poll.get_questions()[0].get_title() == 'Question title'
+    assert poll.get_questions()[0].get_choices()[0].get_text() == 'Choice one'
+    assert poll.get_questions()[0].get_choices()[1].get_text() == 'Choice two'
+    assert poll.get_questions()[0].get_choices()[2].get_text() == 'Choice three'

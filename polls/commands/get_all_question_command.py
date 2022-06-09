@@ -1,9 +1,9 @@
-from polls.controllers import get_all_question_controller
+from polls.controllers import GetQuestionController
 
 
 def get_all_question_command():
-    questions = get_all_question_controller()
+    questions = GetQuestionController().get_all()
     print('Poll list:')
     print('\n')
     for index, question in enumerate(questions, start=0):
-        print(f'Title: {index+1}) {question._title} Id: {question._id}')
+        print(f'Title: {index+1}) {question.get_title()} Id: {question.get_id()}')
