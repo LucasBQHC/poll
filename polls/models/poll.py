@@ -7,9 +7,10 @@ from .question import Question
 
 class Poll:
 
-    def __init__(self, title) -> None:
+    def __init__(self, title, owner) -> None:
         self._id = str(uuid.uuid4())
         self._title = title
+        self._owner = owner
         self._publication_date = None
         self._state = PollStatus.DRAFT
         self._questions = []
@@ -23,6 +24,9 @@ class Poll:
 
     def get_title(self):
         return self._title
+
+    def get_owner(self):
+        return self._owner
 
     def get_publication_date(self):
         return self._publication_date

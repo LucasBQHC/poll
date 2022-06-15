@@ -5,6 +5,9 @@ from polls.controllers import CreatePollController
 def test_create_poll(repository_transaction):
     poll = CreatePollController(
         poll_title='Poll title',
+        owner_first_name='Homero',
+        owner_last_name='Simpson',
+        owner_username='mr_x',
         question_title='Question title',
         choices=[
             'Choice one',
@@ -14,6 +17,9 @@ def test_create_poll(repository_transaction):
     ).create()
 
     assert poll.get_title() == 'Poll title'
+    assert poll.get_owner().get_first_name() == 'Homero'
+    assert poll.get_owner().get_last_name() == 'Simpson'
+    assert poll.get_owner().get_username() == 'mr_x'
     assert poll.get_state() == PollStatus.DRAFT
     assert poll.get_questions()[0].get_title() == 'Question title'
     assert poll.get_questions()[0].get_choices()[0].get_text() == 'Choice one'
