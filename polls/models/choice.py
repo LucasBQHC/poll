@@ -2,7 +2,7 @@
 
 class Choice:
 
-    def __init__(self, text: str):
+    def __init__(self, text: str) -> None:
         self._text = text
         self._votes = 0
 

@@ -5,10 +5,10 @@ from polls.repository import QuestionRepository
 
 class CreateQuestionController:
 
-    def __init__(self, title, choices):
+    def __init__(self, title: str, choices) -> None:
         self._title = title
         self._choices = choices
-    
+
     def create(self):
         question = Question(title=self._title)
         for choice in self._choices:

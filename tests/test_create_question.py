@@ -1,5 +1,4 @@
 from polls.controllers import CreateQuestionController
-from polls.repository.question_repository import QuestionRepository
 
 
 def test_create_question(repository_transaction):
@@ -16,5 +15,5 @@ def test_create_question(repository_transaction):
     assert question.get_choices()[0].get_votes() == 0
     assert question.get_choices()[1].get_text() == 'choice two'
     assert question.get_choices()[1].get_votes() == 0
-    assert question.get_choices()[2].get_text()== 'choice three'
+    assert question.get_choices()[2].get_text() == 'choice three'
     assert question.get_choices()[2].get_votes() == 0

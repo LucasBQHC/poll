@@ -5,7 +5,7 @@ from .choice import Choice
 
 class Question:
 
-    def __init__(self, title: str):
+    def __init__(self, title: str) -> None:
         self._id = str(uuid.uuid4())
         self._title = title
         self._choices = []
@@ -13,7 +13,7 @@ class Question:
     def add_choice(self, choice):
         assert isinstance(choice, Choice)
         self._choices.append(choice)
-    
+
     def get_title(self):
         return self._title
 
@@ -21,4 +21,4 @@ class Question:
         return self._id
 
     def get_choices(self):
-        return tuple(self._choices) 
+        return tuple(self._choices)

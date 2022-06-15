@@ -1,6 +1,5 @@
 from polls.controllers import GetQuestionController
 from polls.controllers import CreateQuestionController
-from polls.repository.question_repository import QuestionRepository
 
 
 def test_get_question(repository_transaction):
@@ -28,5 +27,4 @@ def test_when_id_does_not_exists():
     question = GetQuestionController().get_by_id(
         '3a6384fc-2b57-461f-814f-7542b2953c5f'
     )
-
-    assert question == None
+    assert question is None

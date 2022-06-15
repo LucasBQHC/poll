@@ -1,6 +1,5 @@
 from constants import PollStatus
 from polls.controllers import CreatePollController
-from polls.repository.question_repository import QuestionRepository
 
 
 def test_create_poll(repository_transaction):

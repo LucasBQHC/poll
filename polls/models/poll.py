@@ -7,7 +7,7 @@ from .question import Question
 
 class Poll:
 
-    def __init__(self, title):
+    def __init__(self, title) -> None:
         self._id = str(uuid.uuid4())
         self._title = title
         self._publication_date = None
