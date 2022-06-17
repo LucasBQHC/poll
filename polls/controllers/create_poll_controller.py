@@ -6,7 +6,7 @@ from polls.repository import PollRepository
 
 class CreatePollController:
 
-    def __init__(self, poll_title, owner_first_name, owner_last_name,  owner_username, question_title, choices) -> None:
+    def __init__(self, poll_title, owner_first_name, owner_last_name, owner_username, question_title, choices) -> None:
         self._poll_title = poll_title
         self._owner_first_name = owner_first_name
         self._owner_last_name = owner_last_name

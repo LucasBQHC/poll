@@ -1,7 +1,7 @@
 from polls.repository import PollRepository
 
 
-class GetPollDetailsController:
+class GetPollController:
 
     def get_by_id(self, id):
         return PollRepository().get_by_id(id=id)

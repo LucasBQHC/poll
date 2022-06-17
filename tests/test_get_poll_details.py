@@ -1,6 +1,6 @@
 from polls.controllers import CreateQuestionController
 from polls.controllers import CreateUserController
-from polls.controllers import GetPollDetailsController
+from polls.controllers import GetPollController
 from polls.repository import PollRepository
 from polls.models.poll import Poll
 
@@ -15,10 +15,6 @@ def test_get_poll(poll_repository_transaction):
         title='Poll title',
         owner=owner
     )
-    poll = Poll(
-        title='Poll title',
-        owner=owner
-    )
     question = CreateQuestionController(
         title='Question title',
         choices=[
@@ -29,7 +25,7 @@ def test_get_poll(poll_repository_transaction):
     ).create()
     poll.add_question(question=question)
     PollRepository().add(poll=poll)
-    poll_details = GetPollDetailsController().get_by_id(id=poll.get_id())
+    poll_details = GetPollController().get_by_id(id=poll.get_id())
 
     assert poll_details.get_title() == poll.get_title()
     assert poll_details.get_owner() == poll.get_owner()
@@ -49,10 +45,6 @@ def test_get_all_polls(poll_repository_transaction):
         title='Poll title',
         owner=owner
     )
-    poll = Poll(
-        title='Poll title',
-        owner=owner
-    )
     question = CreateQuestionController(
         title='Question title',
         choices=[
@@ -69,10 +61,6 @@ def test_get_all_polls(poll_repository_transaction):
         last_name='Simpson',
         username='mr_x'
     ).create()
-    poll = Poll(
-        title='Poll title',
-        owner=owner
-    )
     poll = Poll(
         title='Poll title',
         owner=owner
