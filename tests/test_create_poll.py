@@ -2,12 +2,10 @@ from constants import PollStatus
 from polls.controllers import CreatePollController
 
 
-def test_create_poll(question_repository_transaction):
+def test_create_poll(question_repository_transaction, owner_dto):
     poll = CreatePollController(
         poll_title='Poll title',
-        owner_first_name='Homero',
-        owner_last_name='Simpson',
-        owner_username='mr_x',
+        owner_dto=owner_dto,
         question_title='Question title',
         choices=[
             'Choice one',
