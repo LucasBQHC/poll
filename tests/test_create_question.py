@@ -1,7 +1,7 @@
 from polls.controllers import CreateQuestionController
 
 
-def test_create_question(repository_transaction):
+def test_create_question(question_repository_transaction):
     question = CreateQuestionController(
         title='Some question',
         choices=[

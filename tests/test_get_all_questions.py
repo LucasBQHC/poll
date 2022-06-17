@@ -2,7 +2,7 @@ from polls.controllers import CreateQuestionController
 from polls.repository.question_repository import QuestionRepository
 
 
-def test_get_all_question(repository_transaction):
+def test_get_all_question(question_repository_transaction):
     CreateQuestionController(
         title='Some question',
         choices=[
@@ -11,7 +11,7 @@ def test_get_all_question(repository_transaction):
             'choice three',
         ]
     ).create()
-    
+
     CreateQuestionController(
         title='Some question',
         choices=[

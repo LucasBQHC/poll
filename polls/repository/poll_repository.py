@@ -1,3 +1,6 @@
+from polls import settings
+
+
 class PollRepository:
 
     _polls = []
@@ -12,3 +15,7 @@ class PollRepository:
         for poll in self._polls:
             if poll.get_id() == id:
                 return poll
+
+    if settings.ENVIRONMENT == 'testing':
+        def clear_all(self):
+            self._polls.clear()
